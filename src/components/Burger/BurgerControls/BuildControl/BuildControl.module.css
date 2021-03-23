@@ -1,0 +1,61 @@
+
+.BuildControl {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.BuildControl p{
+    font-weight: var(--fw-700);
+    font-size: 1.2rem;
+}
+
+.BuildControl .TextRed{
+    color: red;
+}
+
+.BuildControl .TextGreen{
+    color: green;
+}
+
+.BuildControl .Split{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.BuildControl .Thumbnail{
+    margin: 0 0.5em;
+    height: 50px;
+}
+
+.BuildControl button{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.90em;
+    padding: 0.25em .5em;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    border-radius: 100vh;
+}
+
+.BuildControl .Less{
+    background-color: #D39952;
+    color: white;
+    
+}
+.BuildControl .More{
+    background-color: #8F5E1E;
+    color: white;
+}
+
+.BuildControl .Less:hover, .BuildControl .Less:active {  
+    background-color: #DAA972;
+    color: white;
+}
+
+.BuildControl .More:hover,.BuildControl .More:active {
+    background-color: #99703F;
+    color: white;
+}

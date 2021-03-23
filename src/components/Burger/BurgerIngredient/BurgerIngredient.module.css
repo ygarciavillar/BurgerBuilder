@@ -1,0 +1,13 @@
+.BreadBottom{
+    margin-top: auto;
+}
+
+.Images2 {
+    height: 50px;
+}
+
+.Images20{
+    margin: 0 auto;
+    height: calc(90% / 20);
+}
+
