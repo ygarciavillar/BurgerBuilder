@@ -2,17 +2,37 @@ import React from 'react'
 
 import classes from './BuildControl.module.css'
 
-const BurgerControl = ({ thumbnail, count }) => {
+const BurgerControl = ({ thumbnail, onMore, onLess }) => {
 
     return (
         <div className={classes.BuildControl}>
-            <p className={classes.TextRed}>0</p>
+
+            {thumbnail &&
+                <p
+                    className={thumbnail.count > 0 ? classes.TextGreen : classes.TextRed}>
+                    {thumbnail.count}
+                </p>}
+
             <div className={classes.Split}>
-                <button className={classes.Less} > Less </button>
-                <img src={`images/ingredients/${thumbnail}.png`}
-                    alt={thumbnail}
-                    className={classes.Thumbnail} />
-                <button className={classes.More}> More </button>
+                {(thumbnail && thumbnail.count > 0) &&
+                    <button
+                        className={classes.Less}
+                        onClick={() => onLess(thumbnail)}
+                    > Less
+                   </button>
+                }
+
+
+                {thumbnail &&
+                    <img src={thumbnail.src}
+                        alt={thumbnail.name}
+                        className={classes.Thumbnail} />
+
+                }
+                <button
+                    className={classes.More}
+                    onClick={() => onMore(thumbnail)}>
+                    More </button>
             </div>
         </div>
     )

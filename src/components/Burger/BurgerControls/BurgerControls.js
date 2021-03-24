@@ -1,18 +1,24 @@
 import React from 'react'
 
 import BuildControl from './BuildControl/BuildControl'
-import Carrucel from './BurgerCarrusel/Carrucel'
-const BurgerControls = (props) => {
+import Carousel from './BurgerCarousel/Carousel'
+const BurgerControls = ({ ingredients, onSelected, ingSelected, onMore, onLess }) => {
+
+    const carouselItems = ingredients.map((ing) => {
+        return <div
+            key={`${ing.id}${ing.name}`}
+            onClick={() => onSelected(ing.id)}
+        >
+            <img src={ing.src} alt={ing.name}></img>
+        </div>
+    })
 
     return (
         <section style={{}}>
-            <BuildControl thumbnail='bacon' />
-            <Carrucel>
-                <img src='images/ingredients/bacon.png' alt="bacon"></img>
-                <img src='images/ingredients/queso.png' alt="bacon"></img>
-                <img src='images/ingredients/cebolla.png' alt="bacon"></img>
-                <img src='images/ingredients/meat.png' alt="bacon"></img>
-            </Carrucel>
+            <BuildControl thumbnail={ingSelected} onMore={onMore} onLess={onLess} />
+            <Carousel show={4} infiniteLoop={true}>
+                {carouselItems}
+            </Carousel>
         </section>
     )
 }

@@ -8,7 +8,7 @@ const Burger = ({ ingredients }) => {
     let ingredLength = ingredients.length
 
     if (ingredients.length > 0) {
-        ingredList = ingredients.reverse().map((ing, i) => {
+        ingredList = ingredients.map((ing, i) => {
             console.log(ing)
             return <BurgerIngredient
                 key={`${ing}${i}`}
