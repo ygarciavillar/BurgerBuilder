@@ -1,6 +1,20 @@
 :root{
   --fw-400: 400;
   --fw-700: 700;
+
+  --clr-neutral-100: #fff;
+  --clr-neutral-200: #eef1f6;
+  --clr-neutral-300: #a9afbc;
+  --clr-neutral-400: #737b8c;
+  --clr-neutral-500: #434956;
+  --clr-neutral-700: #37393A;
+  --clr-neutral-900: #020203;
+
+  --clr-primary-900:  #1E212B;
+  --clr-primary-700: #CC5803;
+  --clr-primary-500: #bb112d;
+  --clr-primary-300: #149911;
+
 }
 
 /* Resets */
@@ -62,7 +76,7 @@ body {
 }
 
 section {
-  padding: 2.5rem 0 0;
+  padding: 1rem 0 0;
 }
 
 .flow-content > * + * {

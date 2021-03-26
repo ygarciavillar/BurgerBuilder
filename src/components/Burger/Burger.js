@@ -9,7 +9,6 @@ const Burger = ({ ingredients }) => {
 
     if (ingredients.length > 0) {
         ingredList = ingredients.map((ing, i) => {
-            console.log(ing)
             return <BurgerIngredient
                 key={`${ing}${i}`}
                 type={ing}

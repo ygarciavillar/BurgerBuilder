@@ -1,0 +1,66 @@
+
+.BuildControl {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0.5em 0;
+    background-color: #1E212B
+}
+
+.BuildControl p{
+    font-weight: var(--fw-400);
+    font-size: 1.2rem;
+    color: var(--clr-primary-300);
+    margin: 0.5em 0;
+}
+
+
+.BuildControl .Split{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BuildControl .Thumbnail{
+    margin: 0 0.5em;
+    height: 50px;
+}
+
+.BuildControl button{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.5em;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.BuildControl .Less,
+.BuildControl .More{
+    background-color: var(--clr-primary-700);
+    color: var(--clr-neutral-900);  
+}
+
+.BuildControl button:disabled {
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-neutral-100);
+    cursor: default;
+}
+
+.BuildControl button:hover:disabled {
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-neutral-100);
+    cursor: not-allowed;
+}
+
+
+.BuildControl .Less:hover, .BuildControl .Less:active ,
+.BuildControl .More:hover,.BuildControl .More:active{  
+    color: var(--clr-neutral-100);
+    border: 2px solid var(--clr-neutral-500)
+}
+

@@ -24,12 +24,11 @@ const Carousel = ({ children, show, infiniteLoop }) => {
     const next = () => {
         if (infiniteLoop || currentIndex < (length - show))
             setCurrentIndex(prevIndex => prevIndex + 1)
-        console.log(currentIndex)
     }
+
     const prev = () => {
         if (infiniteLoop || currentIndex > 0)
             setCurrentIndex(prevIndex => prevIndex - 1)
-        console.log(currentIndex)
     }
 
     const handleTransitionEnd = () => {
@@ -61,27 +60,6 @@ const Carousel = ({ children, show, infiniteLoop }) => {
         return output
     }
 
-    let clsShow = null
-
-    switch (show) {
-        case 2:
-            clsShow = `${classes.Content} ${classes.Show2}`
-            break;
-        case 3:
-            clsShow = `${classes.Content} ${classes.Show3}`
-            break;
-        case 4:
-            clsShow = `${classes.Content} ${classes.Show4}`
-            break;
-        case 5:
-            clsShow = `${classes.Content} ${classes.Show5}`
-            break;
-
-        default:
-            clsShow = classes.Content;
-            break;
-    }
-
     return (
         <div className={classes.Container}>
             <div className={classes.Wrapper}>
@@ -93,7 +71,7 @@ const Carousel = ({ children, show, infiniteLoop }) => {
                 }
                 <div className={classes.ContentWrapper}>
                     <div
-                        className={clsShow}
+                        className={[classes.Content, classes[`Show${show}`]].join(' ')}
                         style={{
                             transform: `translateX(-${currentIndex * (100 / show)}%)`,
                             transition: !transitionEnabled ? 'none' : undefined
@@ -118,11 +96,6 @@ const Carousel = ({ children, show, infiniteLoop }) => {
                 }
             </div>
         </div >
-
-
-
-
-
     )
 }
 

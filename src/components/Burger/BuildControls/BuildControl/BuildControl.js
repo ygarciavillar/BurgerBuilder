@@ -2,25 +2,22 @@ import React from 'react'
 
 import classes from './BuildControl.module.css'
 
-const BurgerControl = ({ thumbnail, onMore, onLess }) => {
+const BurgerControl = ({ thumbnail, onMore, onLess, total }) => {
+
+    const price = new Intl.NumberFormat('en-US',
+        { style: 'currency', currency: 'USD' }
+    ).format(total);
 
     return (
         <div className={classes.BuildControl}>
-
-            {thumbnail &&
-                <p
-                    className={thumbnail.count > 0 ? classes.TextGreen : classes.TextRed}>
-                    {thumbnail.count}
-                </p>}
-
+            <p className={classes.TextGreen}>Current Price: <strong>{price}</strong></p>
             <div className={classes.Split}>
-                {(thumbnail && thumbnail.count > 0) &&
-                    <button
-                        className={classes.Less}
-                        onClick={() => onLess(thumbnail)}
-                    > Less
+                <button
+                    className={classes.Less}
+                    disabled={thumbnail.count <= 0}
+                    onClick={() => onLess(thumbnail)}
+                > -
                    </button>
-                }
 
 
                 {thumbnail &&
@@ -32,7 +29,7 @@ const BurgerControl = ({ thumbnail, onMore, onLess }) => {
                 <button
                     className={classes.More}
                     onClick={() => onMore(thumbnail)}>
-                    More </button>
+                    + </button>
             </div>
         </div>
     )
