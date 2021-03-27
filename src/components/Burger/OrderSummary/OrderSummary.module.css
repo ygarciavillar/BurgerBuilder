@@ -1,0 +1,63 @@
+.Summary p{
+    font-size: 0.8rem ;
+}
+
+.Header{
+    --flow-spacer: 0.7em
+}
+
+.Title{
+  color: var(--clr-primary-700) ;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+
+.Body ul{
+  margin: 1em 0;
+  padding-left: 1em;
+  font-size: 0.8rem;
+}
+
+.Body p{
+    color: var(--clr-primary-300);
+}
+
+
+.Footer {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.Footer p {
+    text-align: left;
+}
+
+.Footer button{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+@media(min-width: 600px){
+    .Summary p{
+    font-size: 1rem ;
+}
+   .Header{
+    --flow-spacer: 0.5em
+}
+   .Title{
+     font-size: 1.2rem;
+   }
+   .Body li{
+     font-size: 1rem;
+}
+.Footer p{
+    text-align: center;
+}
+
+}

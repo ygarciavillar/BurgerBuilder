@@ -7,7 +7,7 @@ import classes from './BuildControls.module.css'
 const BuildControls = (props) => {
 
     const { ingredients, onSelected, ingSelected, onMore, onLess,
-        purchasable, totalPrice } = props
+        purchasable, totalPrice, onPurchase } = props
 
     const carouselItems = ingredients.map((ing) => {
         return <div
@@ -25,7 +25,8 @@ const BuildControls = (props) => {
                     thumbnail={ingSelected}
                     onMore={onMore}
                     onLess={onLess}
-                    total={totalPrice} />
+                    totalPrice={totalPrice}
+                />
                 <Carousel show={4} infiniteLoop={true}>
                     {carouselItems}
                 </Carousel>
@@ -33,6 +34,7 @@ const BuildControls = (props) => {
                 <button
                     className={classes.OrderButton}
                     disabled={!purchasable}
+                    onClick={() => onPurchase()}
                 >
                     ORDER NOW
                 </button>

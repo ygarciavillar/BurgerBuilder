@@ -2,15 +2,15 @@ import React from 'react'
 
 import classes from './BuildControl.module.css'
 
-const BurgerControl = ({ thumbnail, onMore, onLess, total }) => {
+const BurgerControl = ({ thumbnail, onMore, onLess, totalPrice }) => {
 
-    const price = new Intl.NumberFormat('en-US',
-        { style: 'currency', currency: 'USD' }
-    ).format(total);
+
 
     return (
         <div className={classes.BuildControl}>
-            <p className={classes.TextGreen}>Current Price: <strong>{price}</strong></p>
+            <p className={classes.TextGreen}>
+                Current Price: <strong>{totalPrice}</strong>
+            </p>
             <div className={classes.Split}>
                 <button
                     className={classes.Less}

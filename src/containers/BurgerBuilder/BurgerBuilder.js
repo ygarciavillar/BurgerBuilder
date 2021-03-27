@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react'
+
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+import Modal from '../../components/UI/Modal/Modal'
 
 class BurgerBuilder extends Component {
 
@@ -19,9 +22,10 @@ class BurgerBuilder extends Component {
         IngredSelected: { id: 1, name: 'meat', src: 'images/ingredients/meat.png', count: 0, price: 1.5 },
         totalPrice: 4,
         purchasable: false,
+        showModal: false,
     }
 
-    photoSelected = (id) => {
+    photoSelected = id => {
         const selected = this.state.ingredients.find(ing => ing.id === id)
         this.setState({
             IngredSelected: selected
@@ -45,12 +49,11 @@ class BurgerBuilder extends Component {
             IngredSelected: { ...ing, count: ing.count + 1 },
             totalPrice: newPrice,
             purchasable: newList.length > 0
-
         })
         console.log(this.state)
     }
 
-    less = (ing) => {
+    less = ing => {
         const update = this.state.ingredients.map(ingred => {
             if (ingred.id === ing.id) {
                 return { ...ingred, count: ingred.count - 1 }
@@ -74,9 +77,31 @@ class BurgerBuilder extends Component {
         console.log(this.state)
     }
 
+    modalHandler = () => {
+        this.setState((prev) => ({
+            showModal: !prev.showModal
+        }))
+    }
+
+    purchaseHandler = () => {
+        /*Method for handling the button continue in Modal summary */
+    }
+
     render() {
+
+        const price = new Intl.NumberFormat('en-US',
+            { style: 'currency', currency: 'USD' }
+        ).format(this.state.totalPrice);
+
         return (
             <Fragment>
+                <Modal isOpen={this.state.showModal} modalClosed={this.modalHandler}>
+                    <OrderSummary
+                        ingredients={this.state.ingredients}
+                        price={price}
+                        modalClosed={this.modalHandler}
+                    />
+                </Modal>
                 <Burger ingredients={this.state.list} />
                 <BuildControls
                     ingredients={this.state.ingredients}
@@ -85,7 +110,8 @@ class BurgerBuilder extends Component {
                     onMore={this.more}
                     onLess={this.less}
                     purchasable={this.state.purchasable}
-                    totalPrice={this.state.totalPrice} />
+                    totalPrice={price}
+                    onPurchase={this.modalHandler} />
             </Fragment>
         )
     }

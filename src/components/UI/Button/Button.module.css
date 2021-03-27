@@ -1,0 +1,21 @@
+.Button {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: var(--fw-700);
+    margin-top: 1.2em;
+}
+
+.Button:first-of-type{
+    margin-right: 1.2em;
+}
+
+.Success{
+    color: var(--clr-primary-300)
+}
+
+.Danger{
+    color: var(--clr-primary-500);
+}
