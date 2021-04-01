@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Button from '../../UI/Button/Button'
 import classes from './OrderSummary.module.css'
-
 
 const OrderSummary = ({ ingredients, price, modalClosed }) => {
 

@@ -19,7 +19,7 @@ class BurgerBuilder extends Component {
             { id: 8, name: 'pickle', src: 'images/ingredients/pickle.png', count: 0, price: 0.2 }
         ],
         list: [],
-        IngredSelected: { id: 1, name: 'meat', src: 'images/ingredients/meat.png', count: 0, price: 1.5 },
+        IngredSelected: null,
         totalPrice: 4,
         purchasable: false,
         showModal: false,
@@ -87,6 +87,11 @@ class BurgerBuilder extends Component {
 
     render() {
 
+        let ingSelected = this.state.IngredSelected
+        if (!ingSelected) {
+            ingSelected = this.state.ingredients[0]
+        }
+
         const price = new Intl.NumberFormat('en-US',
             { style: 'currency', currency: 'USD' }
         ).format(this.state.totalPrice);
@@ -104,7 +109,7 @@ class BurgerBuilder extends Component {
                 <BuildControls
                     ingredients={this.state.ingredients}
                     onSelected={this.photoSelected}
-                    ingSelected={this.state.IngredSelected}
+                    ingSelected={ingSelected}
                     onMore={this.more}
                     onLess={this.less}
                     purchasable={this.state.purchasable}
