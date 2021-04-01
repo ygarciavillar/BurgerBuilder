@@ -49,7 +49,7 @@
 }
 
 .Content.Show5 > *{
-    width: calc((100% / 5) -5%) ;
+    width: calc((100% / 5)) ;
 }
 
 .LeftArrow, .RigthArrow{

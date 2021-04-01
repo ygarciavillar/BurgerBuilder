@@ -50,7 +50,6 @@ class BurgerBuilder extends Component {
             totalPrice: newPrice,
             purchasable: newList.length > 0
         })
-        console.log(this.state)
     }
 
     less = ing => {
@@ -74,7 +73,6 @@ class BurgerBuilder extends Component {
             totalPrice: newPrice,
             purchasable: newList.length > 0
         })
-        console.log(this.state)
     }
 
     modalHandler = () => {

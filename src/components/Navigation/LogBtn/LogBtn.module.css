@@ -1,0 +1,38 @@
+.LogBtn{
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em;
+    font-size: 2rem;
+    width: 70%;
+    background-color: var(--clr-primary-700);  
+    color: var(--clr-primary-900);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.LogBtn:hover{
+    color: var(--clr-neutral-200)
+}
+
+@media screen and (min-width: 45rem){
+    .LogBtn{
+      width: auto;
+      height: 100%;
+      margin: 0;
+      background-color: var(--clr-primary-900);
+      color: var(--clr-primary-300);
+      font-size: 1rem;
+      border-radius: none;
+      padding: 0.40em 1em;
+}
+
+.LogBtn:hover{
+    color: var(--clr-neutral-200);
+
+}
+
+}

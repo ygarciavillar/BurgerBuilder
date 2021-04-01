@@ -3,6 +3,7 @@ import React from 'react'
 import Button from '../../UI/Button/Button'
 import classes from './OrderSummary.module.css'
 
+
 const OrderSummary = ({ ingredients, price, modalClosed }) => {
 
     const ingredSummary = ingredients.map(ing => {

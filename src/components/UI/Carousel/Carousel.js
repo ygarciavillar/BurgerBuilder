@@ -63,7 +63,6 @@ const Carousel = ({ children, show, infiniteLoop }) => {
     return (
         <div className={classes.Container}>
             <div className={classes.Wrapper}>
-
                 {(infiniteLoop || currentIndex > 0) &&
                     <button className={classes.LeftArrow} onClick={prev}>
                         &lt;

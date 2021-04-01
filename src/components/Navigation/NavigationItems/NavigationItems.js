@@ -7,8 +7,9 @@ import classes from './NavigationItems.module.css'
 const navigationItems = () => {
     return (
         <ul className={classes.NavigationItems}>
+            <NavigationItem link="/">Home</NavigationItem>
             <NavigationItem link="/" active>Burger Builder</NavigationItem>
-            <NavigationItem link="/">Orders</NavigationItem>
+            <NavigationItem link="/">Checkout</NavigationItem>
         </ul>
     )
 }

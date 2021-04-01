@@ -1,0 +1,47 @@
+.NavToogle{
+    position: fixed;
+    top: 0.75em;
+    right: 1em;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    z-index: 100;
+    
+}
+
+.NavToogle div{
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--clr-primary-900);
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.25s linear;
+}
+
+.Open div{
+    background: var(--clr-neutral-200);
+}
+
+.Open div:nth-child(1){
+    transform: rotate(45deg);
+}
+
+.Open div:nth-child(2){
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.Open div:nth-child(3){
+    transform: rotate(-45deg);
+}
+
+
+
+
+@media(min-width: 45rem){
+    .NavToogle{
+      display: none;
+}
+}

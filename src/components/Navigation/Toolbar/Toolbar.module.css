@@ -12,6 +12,19 @@
     z-index: 1;
 }
 
-.Toolbar nav{
-    height: 100%;
+.NavDesktopOnly{
+    width: 60%;
+    flex: 0 1 auto
 }
+
+
+
+
+@media(max-width: 45rem){
+    .NavDesktopOnly, .BtnDesktopOnly{
+      display: none;
+}
+    
+}
+
+

@@ -1,8 +1,25 @@
 .NavigationItems{
     height: 100%;
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-content: center;
-    gap: 1em;
+    justify-content: space-around;
 }
 
+
+@media screen and (min-width: 45rem){
+  .NavigationItems{
+    flex-flow: row nowrap;
+    gap: 1em;
+}
+}
+
+/*.NavigationItems button{
+    height: 100%;
+    display: inline-block;
+    border: none;
+    padding: 0.25em 0.75em;
+    background-color: var(--clr-primary-900);
+    color: var(--clr-neutral-200);
+    border-radius: 5px;
+} */

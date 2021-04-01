@@ -7,5 +7,6 @@ export default function App() {
     <Layout>
       <BurgerBuilder />
     </Layout>
+
   );
 }

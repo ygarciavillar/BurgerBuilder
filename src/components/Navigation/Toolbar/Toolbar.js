@@ -2,20 +2,24 @@ import React from 'react'
 
 import Logo from '../../Logo/Logo'
 import NavigationItems from '../NavigationItems/NavigationItems'
-
+import HamburgerToogle from '../SideNav/HamburgerToogle/HamburgerToogle'
+import LogBtn from '../LogBtn/LogBtn'
 import classes from './Toolbar.module.css'
 
 
-const toobar = () => {
+const toolbar = () => {
     return (
         <header className={classes.Toolbar}>
-            <div>Menu</div>
             <Logo />
-            <nav>
+            <nav className={classes.NavDesktopOnly}>
                 <NavigationItems />
             </nav>
+            <div className={classes.BtnDesktopOnly}>
+                <LogBtn>Register</LogBtn>
+            </div>
+            <HamburgerToogle />
         </header>
     )
 }
 
-export default toobar
+export default toolbar

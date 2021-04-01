@@ -1,10 +1,15 @@
 import React from 'react'
 
+import useWindowSize from '../../../helper/useWindowSize'
 import BuildControl from './BuildControl/BuildControl'
 import Carousel from '../../UI/Carousel/Carousel'
 import classes from './BuildControls.module.css'
 
 const BuildControls = (props) => {
+
+    const [width] = useWindowSize()
+
+    const itemToShow = Math.round((width) * 0.7 / 180)
 
     const { ingredients, onSelected, ingSelected, onMore, onLess,
         purchasable, totalPrice, onPurchase } = props
@@ -19,7 +24,7 @@ const BuildControls = (props) => {
     })
 
     return (
-        <section>
+        < section >
             <div className={classes.BuildControls}>
                 <BuildControl
                     thumbnail={ingSelected}
@@ -27,7 +32,7 @@ const BuildControls = (props) => {
                     onLess={onLess}
                     totalPrice={totalPrice}
                 />
-                <Carousel show={4} infiniteLoop={true}>
+                <Carousel show={itemToShow} infiniteLoop={true}>
                     {carouselItems}
                 </Carousel>
 
@@ -39,7 +44,7 @@ const BuildControls = (props) => {
                     ORDER NOW
                 </button>
             </div>
-        </section>
+        </section >
     )
 }
 
