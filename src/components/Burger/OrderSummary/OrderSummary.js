@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Button from '../../UI/Button/Button'
 import classes from './OrderSummary.module.css'
 
-const OrderSummary = ({ ingredients, price, modalClosed }) => {
+const OrderSummary = ({ ingredients, price, modalClosed, purchaseHandler }) => {
 
     const ingredSummary = ingredients.map(ing => {
         if (ing.count > 0) {
@@ -36,7 +36,7 @@ const OrderSummary = ({ ingredients, price, modalClosed }) => {
                     <Button type='Danger' handleClick={modalClosed}>
                         CANCEL
                     </Button>
-                    <Button type='Success' handleClick={() => alert("Sending Order..")}>
+                    <Button type='Success' handleClick={purchaseHandler}>
                         CONTINUE
                     </Button>
                 </div>

@@ -10,7 +10,7 @@
 }
 
 .OtherDevices{
-    height: 100%;
+    height: 70%;
 }
 
 .Open {
@@ -22,7 +22,7 @@
 }
 
 @media screen and (min-width: 45rem){
-    .OtherDevices{
+    .SideDrawer{
         display: none;
     }
 }

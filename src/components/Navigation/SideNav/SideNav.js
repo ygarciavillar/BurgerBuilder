@@ -14,9 +14,8 @@ const sideNav = ({ open }) => {
         <div className={attachedClasses.join(' ')}>
             <nav className={classes.OtherDevices}>
                 <NavigationItems />
-                <LogBtn>Register</LogBtn>
             </nav>
-
+            <LogBtn>Register</LogBtn>
         </div>
     )
 }

@@ -6,8 +6,9 @@ import classes from './Modal.module.css'
 
 class Modal extends React.Component {
 
-    shouldComponentUpdate(prevProp, prevState) {
-        return prevProp.isOpen !== this.props.isOpen
+    shouldComponentUpdate(nextProp) {
+        return (nextProp.isOpen !== this.props.isOpen ||
+            nextProp.children !== this.props.children)
     }
 
     render() {

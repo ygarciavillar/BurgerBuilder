@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { createPortal } from 'react-dom'
 
 import SideNav from '../../SideNav/SideNav'
 import classes from './HamburgerToogle.module.css'
+import useToggler from '../../../../helper/useToggler'
 
 const HamburgerToogle = () => {
-    const [open, setOpen] = useState(false)
+    const [open, toggle] = useToggler(false)
 
     let attachedClasses = [classes.NavToogle]
     if (open) {
@@ -15,7 +16,7 @@ const HamburgerToogle = () => {
         <>
             <div
                 className={attachedClasses.join(' ')}
-                onClick={() => setOpen(!open)}>
+                onClick={toggle}>
                 <div />
                 <div />
                 <div />
