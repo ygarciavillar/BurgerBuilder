@@ -11,7 +11,7 @@ const BuildControls = (props) => {
 
     const itemToShow = Math.round((width) * 0.7 / 180)
 
-    const { ingredients, onSelected, ingSelected, onMore, onLess,
+    const { ingredients, onSelected, ingSelected, ingAdded, onMore, onLess,
         purchasable, totalPrice, onPurchase } = props
 
     const carouselItems = ingredients.map((ing) => {
@@ -28,9 +28,11 @@ const BuildControls = (props) => {
             <div className={classes.BuildControls}>
                 <BuildControl
                     thumbnail={ingSelected}
+                    ingAdded={ingAdded}
                     onMore={onMore}
                     onLess={onLess}
                     totalPrice={totalPrice}
+
                 />
                 <Carousel show={itemToShow} infiniteLoop={true}>
                     {carouselItems}

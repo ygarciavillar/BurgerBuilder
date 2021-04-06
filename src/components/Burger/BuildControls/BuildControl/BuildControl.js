@@ -2,7 +2,7 @@ import React from 'react'
 
 import classes from './BuildControl.module.css'
 
-const BurgerControl = ({ thumbnail, onMore, onLess, totalPrice }) => {
+const BurgerControl = ({ thumbnail, ingAdded, onMore, onLess, totalPrice }) => {
 
 
 
@@ -14,7 +14,7 @@ const BurgerControl = ({ thumbnail, onMore, onLess, totalPrice }) => {
             <div className={classes.Split}>
                 <button
                     className={classes.Less}
-                    disabled={thumbnail.count <= 0}
+                    disabled={!ingAdded.includes(thumbnail.name)}
                     onClick={() => onLess(thumbnail)}
                 > -
                    </button>

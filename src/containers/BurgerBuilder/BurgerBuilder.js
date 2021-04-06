@@ -13,8 +13,8 @@ import { withAxiosErrorHandler } from '../../hoc/withAxiosErrorHandler'
 class BurgerBuilder extends Component {
     state = {
         ingredients: null,
-        list: [],
-        IngredSelected: null,
+        burgerCreated: [],
+        ingredSelected: null,
         totalPrice: 4,
         purchasable: false,
         showModal: false,
@@ -32,7 +32,7 @@ class BurgerBuilder extends Component {
     photoSelected = id => {
         const selected = this.state.ingredients.find(ing => ing.id === id)
         this.setState({
-            IngredSelected: selected
+            ingredSelected: selected
         })
     }
 
@@ -45,12 +45,12 @@ class BurgerBuilder extends Component {
         })
 
         const newPrice = this.state.totalPrice + ing.price
-        const newList = [ing.name, ...this.state.list]
+        const newList = [ing.name, ...this.state.burgerCreated]
 
         this.setState({
-            list: newList,
+            burgerCreated: newList,
             ingredients: update,
-            IngredSelected: { ...ing, count: ing.count + 1 },
+            ingredSelected: { ...ing, count: ing.count + 1 },
             totalPrice: newPrice,
             purchasable: newList.length > 0
         })
@@ -64,16 +64,16 @@ class BurgerBuilder extends Component {
             return ingred
         })
 
-        const newList = [...this.state.list]
+        const newList = [...this.state.burgerCreated]
         const index = newList.indexOf(ing.name)
         newList.splice(index, 1);
 
         const newPrice = this.state.totalPrice - ing.price
 
         this.setState({
-            list: newList,
+            burgerCreated: newList,
             ingredients: update,
-            IngredSelected: { ...ing, count: ing.count - 1 },
+            ingredSelected: { ...ing, count: ing.count - 1 },
             totalPrice: newPrice,
             purchasable: newList.length > 0
         })
@@ -85,12 +85,24 @@ class BurgerBuilder extends Component {
         }))
     }
 
+    burgerSummary = () => {
+        return this.state.burgerCreated.reduce((acc, item) => {
+            acc[item] ? acc[item] += 1 : acc[item] = 1
+            return acc
+        }, {})
+    }
+
+    formatPrice = () => {
+        return new Intl.NumberFormat('en-US',
+            { style: 'currency', currency: 'USD' }
+        ).format(this.state.totalPrice);
+    }
+
     purchaseHandler = () => {
         this.setState({ loading: true })
-        const ingred = this.state.ingredients.filter((ing) => ing.count > 0)
         const order = {
-            ingredients: ingred,
-            price: this.state.totalPrice,
+            ingredients: this.burgerSummary(),
+            price: this.formatPrice(),
             customer: {
                 name: 'Yoandri Garcia',
                 address: {
@@ -104,7 +116,12 @@ class BurgerBuilder extends Component {
         }
         axios.post('/order.json', order)
             .then(response => {
-                this.setState({ loading: false, showModal: false, list: [] })
+                this.setState({
+                    loading: false,
+                    showModal: false,
+                    burgerCreated: [],
+                    totalPrice: 4
+                })
             })
             .catch(error => {
                 this.setState({ loading: false, showModal: false })
@@ -114,6 +131,7 @@ class BurgerBuilder extends Component {
 
     render() {
 
+
         let burger = this.state.error ?
             <p style={{ color: 'red', fontSize: '1.2rem', textAlign: 'center' }}>
                 🥺 Ingredients can't be loaded! Please check your Internet connections..</p>
@@ -121,32 +139,29 @@ class BurgerBuilder extends Component {
         let modalContent = null
 
         if (this.state.ingredients) {
-            let ingSelected = this.state.IngredSelected
+            let ingSelected = this.state.ingredSelected
             if (!ingSelected) {
                 ingSelected = this.state.ingredients[0]
             }
 
-            const price = new Intl.NumberFormat('en-US',
-                { style: 'currency', currency: 'USD' }
-            ).format(this.state.totalPrice);
-
             burger = (
                 <Fragment>
-                    <Burger ingredients={this.state.list} />
+                    <Burger ingredients={this.state.burgerCreated} />
                     <BuildControls
                         ingredients={this.state.ingredients}
                         onSelected={this.photoSelected}
                         ingSelected={ingSelected}
+                        ingAdded={this.state.burgerCreated}
                         onMore={this.more}
                         onLess={this.less}
                         purchasable={this.state.purchasable}
-                        totalPrice={price}
+                        totalPrice={this.formatPrice()}
                         onPurchase={this.modalHandler} />
                 </Fragment>
             )
             modalContent = <OrderSummary
-                ingredients={this.state.ingredients}
-                price={price}
+                order={this.burgerSummary()}
+                price={this.formatPrice()}
                 modalClosed={this.modalHandler}
                 purchaseHandler={this.purchaseHandler}
             />

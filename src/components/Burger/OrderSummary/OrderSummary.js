@@ -3,19 +3,14 @@ import React from 'react'
 import Button from '../../UI/Button/Button'
 import classes from './OrderSummary.module.css'
 
-const OrderSummary = ({ ingredients, price, modalClosed, purchaseHandler }) => {
+const OrderSummary = ({ order, price, modalClosed, purchaseHandler }) => {
 
-    const ingredSummary = ingredients.map(ing => {
-        if (ing.count > 0) {
-            return (
-                <li key={`${ing.key}${ing.name}`}>
-                    <span style={{ textTransform: 'capitalize' }}>{ing.name}</span>: {ing.count}
-                </li>
-            )
-        }
-        else {
-            return null
-        }
+    const ingredSummary = Object.keys(order).map(ing => {
+        return (
+            <li key={`${ing}`}>
+                <span style={{ textTransform: 'capitalize' }}>{ing}</span>: {order[ing]}
+            </li>
+        )
     })
 
     return (
